@@ -30,7 +30,7 @@ public class Snake {
     }
 
     public void move() {
-        if(!Objects.equals(currentMove, "Nothing")) {
+        if(!Objects.equals(currentMove, "NOTHING")) {
             Rectangle a = body.get(0);
 
             Rectangle temp = new Rectangle(Game.dimension, Game.dimension);
@@ -76,8 +76,8 @@ public class Snake {
         else {
             temp.setLocation(a.x+Game.dimension, a.y);
             body.add(0, temp);
-            applesEaten++;
         }
+        applesEaten++;
     }
 
     public String getCurrentMove() {

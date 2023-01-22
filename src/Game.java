@@ -33,7 +33,7 @@ public class Game implements KeyListener {
         graphics.state = "RUNNING";
     }
 
-    public void restart(){
+    public void restart() {
         Game game = new Game();
     }
 
@@ -60,25 +60,25 @@ public class Game implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
 
-        if(Objects.equals(graphics.state, "RUNNING")) {
-            if(keyCode == KeyEvent.VK_W && !Objects.equals(player.getCurrentMove(), "DOWN")) {
+        if (Objects.equals(graphics.state, "RUNNING")) {
+            if (keyCode == KeyEvent.VK_W && !Objects.equals(player.getCurrentMove(), "DOWN")) {
                 player.up();
             }
 
-            if(keyCode == KeyEvent.VK_S && !Objects.equals(player.getCurrentMove(), "UP")) {
+            if (keyCode == KeyEvent.VK_S && !Objects.equals(player.getCurrentMove(), "UP")) {
                 player.down();
             }
 
-            if(keyCode == KeyEvent.VK_A && !Objects.equals(player.getCurrentMove(), "RIGHT")) {
+            if (keyCode == KeyEvent.VK_A && !Objects.equals(player.getCurrentMove(), "RIGHT")) {
                 player.left();
             }
 
-            if(keyCode == KeyEvent.VK_D && !Objects.equals(player.getCurrentMove(), "LEFT")) {
+            if (keyCode == KeyEvent.VK_D && !Objects.equals(player.getCurrentMove(), "LEFT")) {
                 player.right();
             }
-        }else if (graphics.state.equals("END")){
+        } else if (graphics.state.equals("END")) {
             this.restart();
-        }else {
+        } else {
             this.start();
         }
 
