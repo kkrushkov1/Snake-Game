@@ -32,7 +32,8 @@ public class Graphics extends JPanel implements ActionListener {
 
         if (state.equals("START")) {
             graphics2D.setColor(Color.WHITE);
-            graphics2D.drawString("Press any key", Game.width / 2 * Game.dimension - 40,
+            graphics2D.setFont(new Font("times-new-roman", Font.BOLD, 15));
+            graphics2D.drawString("Press any key", Game.width / 2 * Game.dimension - 60,
                     Game.height / 2 * Game.dimension - 20);
         } else if (state.equals("RUNNING")) {
             graphics2D.setColor(Color.red);
@@ -43,10 +44,19 @@ public class Graphics extends JPanel implements ActionListener {
                 graphics2D.fill(r);
 
             }
+            graphics2D.setColor(Color.red);
+            graphics2D.setFont(new Font("times-new-roman", Font.BOLD, 25));
+            graphics2D.drawString("Score: " + snake.applesEaten, Game.width / 2 * Game.dimension - 40,
+                    Game.height / 2 * Game.dimension - 270);
+
+
         } else {
             graphics2D.setColor(Color.WHITE);
-            graphics2D.drawString("Your Score is: " + (snake.getBody().size() - 3), Game.width / 2 * Game.dimension - 40,
+            graphics2D.setFont(new Font("times-new-roman", Font.BOLD, 25));
+            graphics2D.drawString("Your Score is: " + (snake.getBody().size() - 3), Game.width / 2 * Game.dimension - 100,
                     Game.height / 2 * Game.dimension - 20);
+            graphics2D.drawString("Press any key to restart!", Game.width / 2 * Game.dimension - 145,
+                    Game.height / 2 * Game.dimension + 10);
         }
     }
 

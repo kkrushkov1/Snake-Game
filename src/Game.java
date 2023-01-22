@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Objects;
 
 public class Game implements KeyListener {
 
@@ -25,10 +26,15 @@ public class Game implements KeyListener {
         window.setSize(width * dimension + 2, height * dimension + 4);
         window.setVisible(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setLocationRelativeTo(null); // used to center to my computer
     }
 
     public void start() {
         graphics.state = "RUNNING";
+    }
+
+    public void restart(){
+        Game game = new Game();
     }
 
 
@@ -54,17 +60,25 @@ public class Game implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
 
-        if (graphics.state.equals("RUNNING")) {
-            if (keyCode == KeyEvent.VK_W) {
+        if(Objects.equals(graphics.state, "RUNNING")) {
+            if(keyCode == KeyEvent.VK_W && !Objects.equals(player.getCurrentMove(), "DOWN")) {
                 player.up();
-            } else if (keyCode == KeyEvent.VK_S) {
+            }
+
+            if(keyCode == KeyEvent.VK_S && !Objects.equals(player.getCurrentMove(), "UP")) {
                 player.down();
-            } else if (keyCode == KeyEvent.VK_A) {
+            }
+
+            if(keyCode == KeyEvent.VK_A && !Objects.equals(player.getCurrentMove(), "RIGHT")) {
                 player.left();
-            } else {
+            }
+
+            if(keyCode == KeyEvent.VK_D && !Objects.equals(player.getCurrentMove(), "LEFT")) {
                 player.right();
             }
-        } else {
+        }else if (graphics.state.equals("END")){
+            this.restart();
+        }else {
             this.start();
         }
 
